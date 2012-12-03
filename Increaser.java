@@ -19,12 +19,3 @@ public class Increaser implements Runnable {
 		System.out.println("Stopping at " + c.getCount());
 	}
 }
-public class Counter {
-	private int n = 0;
-	public void increase() {
-		n++;
-	}
-	public int getCount() {
-		return n;
-	}
-}

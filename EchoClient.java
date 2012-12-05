@@ -11,9 +11,9 @@ import java.rmi.*;
 public class EchoClient {
     public static void main(String[] args) {
         EchoClient client = new EchoClient();
-        client.launch();
+        client.launch(args[0]);
     }
-    public void launch() {
+    public void launch(String s) {
         // 1. Set up security manager (using the same code as the server)
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
@@ -23,7 +23,7 @@ public class EchoClient {
             Remote service = Naming.lookup("//127.0.0.1:1099/echo");
             EchoService echoService = (EchoService) service;
             // Once this is done, using the service is as easy as a normal method call:
-            String receivedEcho = echoService.echo("Hello!");
+            String receivedEcho = echoService.echo(s);
             System.out.println("Received echo from server: '" + receivedEcho + "'");
         } catch (MalformedURLException ex) { // if name is wrong
             ex.printStackTrace();
